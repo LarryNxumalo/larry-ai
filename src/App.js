@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import alanBtn from '@alan-ai/alan-sdk-web';
 
+import wordsToNumbers from 'words-to-numbers';
 import NewsCards from './components/NewsCards/NewsCards';
 
 //data
@@ -21,8 +22,15 @@ const App = () => {
                 } else if (command === 'highlight') {
                     setActiveArticle((prevActiveArticle) => prevActiveArticle + 1);
                 } else if (command === 'open') {
-                    window.open(articles[number].url, '_blank');
-                    // console.log('number');
+                    const parsedNumber = number.length > 2 ? wordsToNumbers(number, {fuzzy: true}) : number;
+                    const article = articles[parsedNumber - 1];
+
+                    if(parsedNumber > 20){
+                        alanBtn().playText(`(Please try that again.| I only have 20 articles showing | Try something lower than 20 or greater than Zero)`)
+                    } else if(article) {
+                        window.open(article.url, '_blank');
+                        alanBtn().playText(`(Doing just that | Opening...| Doing that | In a sec | Cool | Opening right away)`);
+                    }
                 }
             }
 
