@@ -4,7 +4,11 @@
 
 body {
     margin: 0;
-    background: #000;
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    color: #fff;
     font-family: sans-serif;
 }
 
@@ -18,4 +22,26 @@ html {
 
 h1 {
     color: white;
+    text-align: center;
 }
+
+/* .card-wrapper {
+    background: blue;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card-wrapper .card  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e2e2e2;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.card-wrapper .card {
+    font-size: 20px;
+} */
